@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :task do
+    association :project
     title { 'Task' }
     status { rand(2) }
     from = Date.parse("2019/08/01")
