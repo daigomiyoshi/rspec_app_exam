@@ -97,12 +97,14 @@ RSpec.describe 'Task', type: :system do
   describe 'Task削除' do
     context '正常系' do
       # FIXME: テストが失敗するので修正してください
-      let!(:task_to_be_deleted) { create(:task, :task_to_be_deleted, project_id: project.id) }
+      let!(:task) { create(:task, project_id: project.id) }
       it 'Taskが削除されること' do
         visit project_tasks_path(project)
         click_link 'Destroy'
         page.driver.browser.switch_to.alert.accept
-        expect(page).not_to have_content task_to_be_deleted.title
+        within("tbody.task_list") do
+          expect(page).not_to have_content task.title
+        end
         expect(Task.count).to eq 0
         expect(current_path).to eq project_tasks_path(project)
       end
