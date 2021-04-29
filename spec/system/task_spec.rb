@@ -61,7 +61,7 @@ RSpec.describe 'Task', type: :system do
   describe 'Task編集' do
     context '正常系' do
       let(:task) { create(:task) }
-      let(:task_done) { create(:task, :done, :completed_yesterday) }
+      let(:task_done) { create(:task, :task_completed_yesterday) }
       it 'Taskを編集した場合、一覧画面で編集後の内容が表示されること' do
         # FIXME: テストが失敗するので修正してください
         visit edit_project_task_path(project, task)

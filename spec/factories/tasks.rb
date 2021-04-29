@@ -12,11 +12,9 @@ FactoryBot.define do
     title { 'Task to be deleted' }
   end
 
-  trait :done do
+  trait :task_completed_yesterday do
     status { 'done' }
-  end
-
-  trait :completed_yesterday do
     completion_date { Time.current.yesterday }
   end
+
 end
